@@ -18,14 +18,19 @@ export default class App extends Component {
         if (placeName.trim() === "") {
             return;
         }
-        this.setState(prevState => ({ places: prevState.places.concat(placeName) }));
+        this.setState(prevState => ({
+            places: prevState.places.concat({
+                key: Math.random() + "",
+                value: placeName
+            })
+        }));
     };
 
-    placeDeletedHandler = index => {
+    placeDeletedHandler = key => {
         this.setState(prevState => {
             return {
-                places: prevState.places.filter((place, i) => {
-                    return i !== index;
+                places: prevState.places.filter(place => {
+                    return place.key !== key;
                 })
             };
         });
