@@ -7,7 +7,9 @@ const palaceList = ({ places, onItemDeleted }) => {
     return (
         <FlatList
             data={places}
-            renderItem={info => <ListItem placeName={info.item.value} onItemPressed={() => onItemDeleted(info.item.key)} />}
+            renderItem={info => (
+                <ListItem placeImage={info.item.image} placeName={info.item.name} onItemPressed={() => onItemDeleted(info.item.key)} />
+            )}
             style={styles.listContainer}
         />
     );
